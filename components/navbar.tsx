@@ -51,7 +51,7 @@ export default function Navbar() {
               Проекты
             </a>
             <a href="#news" className="text-primary-foreground hover:text-electric-blue">
-              Новости
+              Новостяи
             </a>
             <Button className="bg-electric-blue hover:bg-electric-blue/90 text-primary w-full">Консультация</Button>
           </div>
