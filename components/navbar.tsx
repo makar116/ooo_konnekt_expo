@@ -3,9 +3,11 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import ConsultationForm from "@/components/consultation-form"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false)
 
   return (
     <nav className="fixed top-0 w-full bg-primary/95 backdrop-blur-sm z-50 border-b border-electric-blue/20">
@@ -28,7 +30,12 @@ export default function Navbar() {
           <a href="#news" className="text-primary-foreground hover:text-electric-blue transition">
             Новости
           </a>
-          <Button className="bg-electric-blue hover:bg-electric-blue/90 text-primary">Консультация</Button>
+          <Button 
+            className="bg-electric-blue hover:bg-electric-blue/90 text-primary"
+            onClick={() => setIsConsultationOpen(true)}
+          >
+            Консультация
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -53,10 +60,23 @@ export default function Navbar() {
             <a href="#news" className="text-primary-foreground hover:text-electric-blue">
               Новостяи
             </a>
-            <Button className="bg-electric-blue hover:bg-electric-blue/90 text-primary w-full">Консультация</Button>
+            <Button 
+              className="bg-electric-blue hover:bg-electric-blue/90 text-primary w-full"
+              onClick={() => {
+                setIsConsultationOpen(true)
+                setIsOpen(false)
+              }}
+            >
+              Консультация
+            </Button>
           </div>
         </div>
       )}
+
+      <ConsultationForm
+        open={isConsultationOpen}
+        onOpenChange={setIsConsultationOpen}
+      />
     </nav>
   )
 }
